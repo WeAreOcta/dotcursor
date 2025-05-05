@@ -13,6 +13,8 @@ tech stack, or shared configuration pattern.
 - Maintain a **centralized, version-controlled** source of `.cursor` folders.
 - Promote **consistency across teams and repositories**.
 - Enable **quick onboarding** by simply linking or copying rules into Cursor.
+- **Inspiration** for new rules and patterns that can be shared with others. Watch how Octa's tech team
+  uses Cursor to automate their work and improve productivity and bring the best practices to your company. Sharing is caring. ❤️
 
 ## 🚀 Usage
 1. Clone or pull this repository.
