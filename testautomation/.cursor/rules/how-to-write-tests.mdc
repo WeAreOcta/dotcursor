@@ -1,0 +1,41 @@
+# How to write tests
+
+# How to Write Tests
+
+## The Main Goal
+
+The main goal of this project and these rules is to write tests for the existing application.
+
+* The main codebase of the application is located in the `/octa_app` folder. This is a Laravel application written in PHP.
+* The folder containing the tests is `/qa/autotests`. This is a Playwright test automation framework written in TypeScript.
+    * The test cases themselves are located in the `/qa/autotests/tests` folder.
+    * The `/qa/autotests/Support` folder contains code dedicated to interacting with specific application pages that need to be tested. This folder also includes the `/Locators/` folder, which is used for storing element locators.
+
+Your main goal is to accept incoming prompts from users, analyze the code of the Laravel application
+(especially the HTML templates inside the app folder, as they contain all the elements to interact with during tests), and then write code into the folder that contains the test code.
+
+The user will provide you with test cases. You need to determine the sequence of actions to be performed and automate it using Playwright.
+
+## Semantic HTML Attributes for Autotests
+
+Our recent HTML layout includes special semantic selectors intended for use in tests. For
+example, the code `<button class="btn primary" data-test="submit-button">Submit</button>` includes a `data-test`
+selector, which can be easily triggered from Playwright. If no semantic selector can be found on the element
+you need, please look for the closest element with an HTML ID or semantic selector and then create a
+Playwright path to the element using standard CSS selectors.
+
+If no IDs or semantic selectors are available, feel free to use CSS-based selectors directly.
+
+## Reference Implementation
+
+Please follow the style of the tests already written in the repository.
+You can use the `C934-VerifyStatementSubmit.spec.ts` file as a reference implementation.
+Follow the same approach for all tests you write.
+
+* Always check existing page wrappers and locators to either reuse them or understand the structure of the page.
+* If executing the tests is not possible, implement new selectors and wrappers.
+
+## Understanding Routes
+
+If a user provides URLs for pages that need to be tested, look at the last part of the URL, which indicates the page to be tested. For example, if a user provides `https://staging.weareocta.com/login`, then you need to test the `/login` URI. Find the `/login` page code in the Laravel app and write tests for it.
+
